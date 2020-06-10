@@ -2,6 +2,7 @@ package com.controle.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Fornecedor {
@@ -55,6 +57,14 @@ public class Fornecedor {
 		joinColumns = @JoinColumn(name="fornecedor_id"),
 		inverseJoinColumns = @JoinColumn(name="cliente_id"))
 	private Set<Cliente> clientes;
+	
+	
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="cliente_id")
+	private Cliente cliente;
+	
+	
 	
 	public Fornecedor() {}
 	

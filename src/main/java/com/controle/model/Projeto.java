@@ -55,6 +55,7 @@ public class Projeto {
 			   			 CascadeType.REFRESH})
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
+	
 
 
 

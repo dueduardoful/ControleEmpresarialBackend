@@ -47,9 +47,14 @@ public class Fornecedor {
 			inverseJoinColumns = @JoinColumn(name="projeto_id")
 			)
 	private Set<Projeto> projetos;
-
-
 	
+	
+	@ManyToMany
+	@JoinTable(
+		name="cliente_fornecedor",
+		joinColumns = @JoinColumn(name="fornecedor_id"),
+		inverseJoinColumns = @JoinColumn(name="cliente_id"))
+	private Set<Cliente> clientes;
 	
 	public Fornecedor() {}
 	

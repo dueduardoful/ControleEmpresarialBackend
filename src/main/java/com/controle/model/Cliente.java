@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Cliente {
@@ -45,6 +46,10 @@ public class Cliente {
 			   CascadeType.DETACH, 
 			   CascadeType.REFRESH})
 	private Set<Projeto> projetos;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="projeto_id")
+	private Projeto projeto;
 	
 	
 	@ManyToMany

@@ -1,6 +1,7 @@
 package com.controle.model;
 
 import java.sql.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -37,6 +40,15 @@ public class Projeto {
 	private String descricao;
 	private String img;
 	
+	
+	@ManyToMany
+	@JoinTable(
+		name="projeto_fornecedor",
+		joinColumns = @JoinColumn(name="projeto_id"),
+		inverseJoinColumns = @JoinColumn(name="fornecedor_id"))
+	private Set<Fornecedor> fornecedores;
+	
+	
 	@ManyToOne(cascade ={CascadeType.PERSIST,
 			   			 CascadeType.MERGE,
 			   			 CascadeType.DETACH,
@@ -44,8 +56,12 @@ public class Projeto {
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 
-	public Projeto(String nomeProjeto, Date dt_inicio, Date dt_fim, int cep, String rua, String cidade, String baiiro,
-			String numeroCasa, String descricao, String img, Cliente cliente) {
+
+
+	public Projeto(Long id, String nomeProjeto, Date dt_inicio, Date dt_fim, int cep, String rua, String cidade,
+			String baiiro, String numeroCasa, String descricao, String img, Set<Fornecedor> fornecedores,
+			Cliente cliente) {
+		this.id = id;
 		this.nomeProjeto = nomeProjeto;
 		this.dt_inicio = dt_inicio;
 		this.dt_fim = dt_fim;
@@ -56,6 +72,7 @@ public class Projeto {
 		this.numeroCasa = numeroCasa;
 		this.descricao = descricao;
 		this.img = img;
+		this.fornecedores = fornecedores;
 		this.cliente = cliente;
 	}
 
@@ -149,14 +166,36 @@ public class Projeto {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Set<Fornecedor> getFornecedores() {
+		return fornecedores;
+	}
+
+	public void setFornecedores(Set<Fornecedor> fornecedores) {
+		this.fornecedores = fornecedores;
+	}
 
 	@Override
 	public String toString() {
-		return "Projeto [nomeProjeto=" + nomeProjeto + ", dt_inicio=" + dt_inicio + ", dt_fim=" + dt_fim + ", cep="
-				+ cep + ", rua=" + rua + ", cidade=" + cidade + ", baiiro=" + baiiro + ", numeroCasa=" + numeroCasa
-				+ ", descricao=" + descricao + ", img=" + img + ", cliente=" + cliente + "]";
+		return "Projeto [id=" + id + ", nomeProjeto=" + nomeProjeto + ", dt_inicio=" + dt_inicio + ", dt_fim=" + dt_fim
+				+ ", cep=" + cep + ", rua=" + rua + ", cidade=" + cidade + ", baiiro=" + baiiro + ", numeroCasa="
+				+ numeroCasa + ", descricao=" + descricao + ", img=" + img + ", fornecedores=" + fornecedores
+				+ ", cliente=" + cliente + "]";
 	}
 
+
+	
 
 
 	

@@ -3,14 +3,32 @@ package com.controle.model;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+@Entity
 public class Projeto {
 	
+	@Id	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false, length = 20)
+	private Long id;
+	
 	private String nomeProjeto;
+	
+	@CreationTimestamp
 	private Date dt_inicio;
+	
+	@UpdateTimestamp
 	private Date dt_fim;
+	
 	private int cep;
 	private String rua;
 	private String cidade;

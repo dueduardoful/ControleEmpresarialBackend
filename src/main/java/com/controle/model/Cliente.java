@@ -43,12 +43,15 @@ public class Cliente {
 			   CascadeType.REFRESH})
 	private Set<Projeto> projetos;
 	
+	
+	
 	// método para relacionamento bi-direcional
+	@SuppressWarnings("unchecked")
 	public void add(Projeto tempProjeto) {
 		if (projetos == null) {
 			projetos = (Set<Projeto>) new List();
 		}
-		projetos.add(tempProjeto);		
+		projetos.add(tempProjeto);
 		tempProjeto.setCliente(this);
 	}
 	

@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,7 +43,7 @@ public class Fornecedor {
 	private String numeroCasa;
 	
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			name="projeto_fornecedor",
 			joinColumns=@JoinColumn(name="fornecedor_id"),
@@ -51,7 +52,7 @@ public class Fornecedor {
 	private Set<Projeto> projetos;
 	
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 		name="cliente_fornecedor",
 		joinColumns = @JoinColumn(name="fornecedor_id"),

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,7 +45,7 @@ public class Cliente {
 	cascade = {CascadeType.PERSIST, 
 			   CascadeType.MERGE, 
 			   CascadeType.DETACH, 
-			   CascadeType.REFRESH})
+			   CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	private Set<Projeto> projetos;
 	
 	@OneToOne(cascade=CascadeType.ALL)
@@ -52,7 +53,7 @@ public class Cliente {
 	private Projeto projeto;
 	
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 		name="cliente_fornecedor",
 		joinColumns = @JoinColumn(name="cliente_id"),

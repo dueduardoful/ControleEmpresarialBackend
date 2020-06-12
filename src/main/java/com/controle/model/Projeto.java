@@ -1,6 +1,6 @@
 package com.controle.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -27,10 +27,10 @@ public class Projeto {
 	private String nomeProjeto;
 	
 	@CreationTimestamp
-	private Date dt_inicio;
+	private LocalDate dt_inicio;
 	
 	@UpdateTimestamp
-	private Date dt_fim;
+	private LocalDate dt_fim;
 	
 	private int cep;
 	private String rua;
@@ -53,7 +53,7 @@ public class Projeto {
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 
-	public Projeto(Long id, String nomeProjeto, Date dt_inicio, Date dt_fim, int cep, String rua, String cidade,
+	public Projeto(Long id, String nomeProjeto, LocalDate dt_inicio, LocalDate dt_fim, int cep, String rua, String cidade,
 			String bairro, String numeroCasa, String descricao, String img, Set<Fornecedor> fornecedores,
 			Cliente cliente) {
 		this.id = id;
@@ -98,19 +98,19 @@ public class Projeto {
 		this.nomeProjeto = nomeProjeto;
 	}
 
-	public Date getDt_inicio() {
+	public LocalDate getDt_inicio() {
 		return dt_inicio;
 	}
 
-	public void setDt_inicio(Date dt_inicio) {
+	public void setDt_inicio(LocalDate dt_inicio) {
 		this.dt_inicio = dt_inicio;
 	}
 
-	public Date getDt_fim() {
+	public LocalDate getDt_fim() {
 		return dt_fim;
 	}
 
-	public void setDt_fim(Date dt_fim) {
+	public void setDt_fim(LocalDate dt_fim) {
 		this.dt_fim = dt_fim;
 	}
 

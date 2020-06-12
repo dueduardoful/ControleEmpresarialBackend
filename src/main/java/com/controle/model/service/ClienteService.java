@@ -2,6 +2,7 @@ package com.controle.model.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.controle.model.Cliente;
@@ -10,6 +11,7 @@ import com.controle.repository.ClienteRepository;
 @Service
 public class ClienteService {
 
+	@Autowired
 	private ClienteRepository clienteRepository;
 
 	public Cliente save(Cliente cliente) {

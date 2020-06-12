@@ -103,27 +103,108 @@ public class Cliente {
 		this.projetos = projetos;
 	}
 	
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public int getCep() {
+		return cep;
+	}
+
+	public void setCep(int cep) {
+		this.cep = cep;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
 	public String getEstado() {
 		return estado;
 	}
 
-	public void ListEstado(String estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getNumeroCasa() {
+		return numeroCasa;
+	}
+
+	public void setNumeroCasa(String numeroCasa) {
+		this.numeroCasa = numeroCasa;
 	}
 
 	public String getComplemento() {
 		return complemento;
 	}
 
-	public void ListComplemento(String complemento) {
+	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+
+	public LocalDate getDt_nasc() {
+		return dt_nasc;
+	}
+
+	public void setDt_nasc(LocalDate dt_nasc) {
+		this.dt_nasc = dt_nasc;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getCelular() {
 		return celular;
 	}
 
-	public void ListCelular(String celular) {
+	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 
@@ -131,154 +212,28 @@ public class Cliente {
 		return telefoneFixo;
 	}
 
-	public void ListTelefoneFixo(String telefoneFixo) {
-		this.telefoneFixo = telefoneFixo;
-	}
-
-	public List<Fornecedor> getFornecedores() {
-		return fornecedores;
-	}
-
-	public void ListFornecedores(List<Fornecedor> fornecedores) {
-		this.fornecedores = fornecedores;
-	}
-
-	public Long getId() {
-		return id;
-	}
-	public void ListId(Long id) {
-		this.id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void ListNome(String nome) {
-		this.nome = nome;
-	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void ListCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	public int getCep() {
-		return cep;
-	}
-	public void ListCep(int cep) {
-		this.cep = cep;
-	}
-	public String getRua() {
-		return rua;
-	}
-	public void ListRua(String rua) {
-		this.rua = rua;
-	}
-	public String getCidade() {
-		return cidade;
-	}
-	public void ListCidade(String cidade) {
-		this.cidade = cidade;
-	}
-	public String getBairro() {
-		return bairro;
-	}
-	public void ListBairro(String bairro) {
-		this.bairro = bairro;
-	}
-	public String getNumeroCasa() {
-		return numeroCasa;
-	}
-	public void ListNumeroCasa(String numeroCasa) {
-		this.numeroCasa = numeroCasa;
-	}
-	public LocalDate getDt_nasc() {
-		return dt_nasc;
-	}
-	public void ListDt_nasc(LocalDate dt_nasc) {
-		this.dt_nasc = dt_nasc;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void ListEmail(String email) {
-		this.email = email;
-	}
-	public String getImg() {
-		return img;
-	}
-	public void ListImg(String img) {
-		this.img = img;
-	}
-	public List<Projeto> getProjetos() {
-		return projetos;
-	}
-
-	public void ListProjetos(List<Projeto> projetos) {
-		this.projetos = projetos;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public void setCep(int cep) {
-		this.cep = cep;
-	}
-
-	public void setRua(String rua) {
-		this.rua = rua;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-	public void setNumeroCasa(String numeroCasa) {
-		this.numeroCasa = numeroCasa;
-	}
-
-	public void setComplemento(String complemento) {
-		this.complemento = complemento;
-	}
-
-	public void setDt_nasc(LocalDate dt_nasc) {
-		this.dt_nasc = dt_nasc;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
-
 	public void setTelefoneFixo(String telefoneFixo) {
 		this.telefoneFixo = telefoneFixo;
+	}
+
+	public String getImg() {
+		return img;
 	}
 
 	public void setImg(String img) {
 		this.img = img;
 	}
 
+	public List<Projeto> getProjetos() {
+		return projetos;
+	}
+
 	public void setProjetos(List<Projeto> projetos) {
 		this.projetos = projetos;
+	}
+
+	public List<Fornecedor> getFornecedores() {
+		return fornecedores;
 	}
 
 	public void setFornecedores(List<Fornecedor> fornecedores) {

@@ -26,6 +26,7 @@ public class ClienteController {
 	
 	@PostMapping("")
 	public Cliente save(@RequestBody Cliente cliente) {
+		System.out.println(cliente);
 		return this.clienteService.save(cliente);
 	}
 	

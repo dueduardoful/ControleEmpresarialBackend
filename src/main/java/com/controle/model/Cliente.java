@@ -27,16 +27,23 @@ public class Cliente {
 	private int cep;
 	
 	private String rua;
+	private String estado;
 	
 	private String cidade;
 	
-	private String baiiro;
+	private String bairro;
 	
 	private String numeroCasa;
+
+	private String complemento;
 	
 	private Date dt_nasc;
 	
 	private String email;
+	
+	private String celular;
+	
+	private String telefoneFixo;
 	
 	private String img;
 	
@@ -67,7 +74,7 @@ public class Cliente {
 	public Cliente() {
 	}
 
-	public Cliente(Long id, String nome, String cpf, int cep, String rua, String cidade, String baiiro,
+	public Cliente(Long id, String nome, String cpf, int cep, String rua, String cidade, String bairro,
 			String numeroCasa, Date dt_nasc, String email, String img, Set<Projeto> projetos) {
 		this.id = id;
 		this.nome = nome;
@@ -75,7 +82,7 @@ public class Cliente {
 		this.cep = cep;
 		this.rua = rua;
 		this.cidade = cidade;
-		this.baiiro = baiiro;
+		this.bairro = bairro;
 		this.numeroCasa = numeroCasa;
 		this.dt_nasc = dt_nasc;
 		this.email = email;
@@ -83,6 +90,45 @@ public class Cliente {
 		this.projetos = projetos;
 	}
 
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
+	public String getTelefoneFixo() {
+		return telefoneFixo;
+	}
+
+	public void setTelefoneFixo(String telefoneFixo) {
+		this.telefoneFixo = telefoneFixo;
+	}
+
+	public Set<Fornecedor> getFornecedores() {
+		return fornecedores;
+	}
+
+	public void setFornecedores(Set<Fornecedor> fornecedores) {
+		this.fornecedores = fornecedores;
+	}
 
 	public Long getId() {
 		return id;
@@ -120,11 +166,11 @@ public class Cliente {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	public String getBaiiro() {
-		return baiiro;
+	public String getBairro() {
+		return bairro;
 	}
-	public void setBaiiro(String baiiro) {
-		this.baiiro = baiiro;
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 	public String getNumeroCasa() {
 		return numeroCasa;
@@ -161,7 +207,7 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", cep=" + cep + ", rua=" + rua + ", cidade="
-				+ cidade + ", baiiro=" + baiiro + ", numeroCasa=" + numeroCasa + ", dt_nasc=" + dt_nasc + ", email="
+				+ cidade + ", bairro=" + bairro + ", numeroCasa=" + numeroCasa + ", dt_nasc=" + dt_nasc + ", email="
 				+ email + ", img=" + img + ", projetos=" + projetos + "]";
 	}
 

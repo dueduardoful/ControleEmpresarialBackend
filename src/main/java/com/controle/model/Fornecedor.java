@@ -36,12 +36,15 @@ public class Fornecedor {
 	
 	private String rua;
 	
+	private String estado;
+	
 	private String cidade;
 	
-	private String baiiro;
+	private String bairro;
 	
 	private String numeroCasa;
 	
+	private String obs;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
@@ -59,18 +62,10 @@ public class Fornecedor {
 		inverseJoinColumns = @JoinColumn(name="cliente_id"))
 	private Set<Cliente> clientes;
 	
-	
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="cliente_id")
-	private Cliente cliente;
-	
-	
-	
 	public Fornecedor() {}
 	
 	public Fornecedor(Long id, String cpf, String nomeEmpresa, String atendente, String cel, String tel, String email,
-			String site, String ramoDeAtuacao, String rua, String cidade, String baiiro, String numeroCasa,
+			String site, String ramoDeAtuacao, String rua, String cidade, String bairro, String numeroCasa,
 			Set<Projeto> projetos) {
 		this.id = id;
 		this.cpf = cpf;
@@ -83,11 +78,34 @@ public class Fornecedor {
 		this.ramoDeAtuacao = ramoDeAtuacao;
 		this.rua = rua;
 		this.cidade = cidade;
-		this.baiiro = baiiro;
+		this.bairro = bairro;
 		this.numeroCasa = numeroCasa;
 		this.projetos = projetos;
 	}
 
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getObs() {
+		return obs;
+	}
+
+	public void setObs(String obs) {
+		this.obs = obs;
+	}
+
+	public Set<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(Set<Cliente> clientes) {
+		this.clientes = clientes;
+	}
 
 	public Long getId() {
 		return id;
@@ -199,13 +217,13 @@ public class Fornecedor {
 	}
 
 
-	public String getBaiiro() {
-		return baiiro;
+	public String getBairro() {
+		return bairro;
 	}
 
 
-	public void setBaiiro(String baiiro) {
-		this.baiiro = baiiro;
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 
 
@@ -233,7 +251,7 @@ public class Fornecedor {
 	public String toString() {
 		return "Fornecedor [id=" + id + ", cpf=" + cpf + ", nomeEmpresa=" + nomeEmpresa + ", atendente=" + atendente
 				+ ", cel=" + cel + ", tel=" + tel + ", email=" + email + ", site=" + site + ", ramoDeAtuacao="
-				+ ramoDeAtuacao + ", rua=" + rua + ", cidade=" + cidade + ", baiiro=" + baiiro + ", numeroCasa="
+				+ ramoDeAtuacao + ", rua=" + rua + ", cidade=" + cidade + ", bairro=" + bairro + ", numeroCasa="
 				+ numeroCasa + ", projetos=" + projetos + "]";
 	}
 	

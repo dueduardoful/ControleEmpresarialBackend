@@ -17,7 +17,7 @@ public class ClienteService {
 	}
 	
 	public Cliente update(Cliente cliente) throws Exception {
-		if(cliente.getId() == 0 && cliente.getId() == null) {
+		if(cliente.getId() == 0 || cliente.getId() == null) {
 			throw new Exception("Para editar um cliente ele deve ter um id valido");
 		}
 		return this.clienteRepository.save(cliente);

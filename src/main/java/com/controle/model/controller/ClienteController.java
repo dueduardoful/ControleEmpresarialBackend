@@ -41,7 +41,7 @@ public class ClienteController {
 	
 	@GetMapping("/{id}")
 	public Cliente findById(@PathVariable("id") long id) {
-		return this.findById(id);
+		return this.clienteService.findById(id);
 	}
 	
 	@DeleteMapping("/{id}")

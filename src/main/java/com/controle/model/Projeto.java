@@ -3,7 +3,6 @@ package com.controle.model;
 import java.sql.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,11 +35,12 @@ public class Projeto {
 	private int cep;
 	private String rua;
 	private String cidade;
-	private String baiiro;
+	private String bairro;
 	private String numeroCasa;
+	private String complemento;
+	private double valorTotal;
 	private String descricao;
 	private String img;
-	
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
@@ -49,19 +49,12 @@ public class Projeto {
 		inverseJoinColumns = @JoinColumn(name="fornecedor_id"))
 	private Set<Fornecedor> fornecedores;
 	
-	
-	@ManyToOne(cascade ={CascadeType.PERSIST,
-			   			 CascadeType.MERGE,
-			   			 CascadeType.DETACH,
-			   			 CascadeType.REFRESH})
+	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
-	
-
-
 
 	public Projeto(Long id, String nomeProjeto, Date dt_inicio, Date dt_fim, int cep, String rua, String cidade,
-			String baiiro, String numeroCasa, String descricao, String img, Set<Fornecedor> fornecedores,
+			String bairro, String numeroCasa, String descricao, String img, Set<Fornecedor> fornecedores,
 			Cliente cliente) {
 		this.id = id;
 		this.nomeProjeto = nomeProjeto;
@@ -70,12 +63,28 @@ public class Projeto {
 		this.cep = cep;
 		this.rua = rua;
 		this.cidade = cidade;
-		this.baiiro = baiiro;
+		this.bairro = bairro;
 		this.numeroCasa = numeroCasa;
 		this.descricao = descricao;
 		this.img = img;
 		this.fornecedores = fornecedores;
 		this.cliente = cliente;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public double getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(double valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 	public Projeto() {
@@ -129,12 +138,12 @@ public class Projeto {
 		this.cidade = cidade;
 	}
 
-	public String getBaiiro() {
-		return baiiro;
+	public String getBairro() {
+		return bairro;
 	}
 
-	public void setBaiiro(String baiiro) {
-		this.baiiro = baiiro;
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 
 	public String getNumeroCasa() {
@@ -169,9 +178,6 @@ public class Projeto {
 		this.cliente = cliente;
 	}
 	
-	
-	
-
 	public Long getId() {
 		return id;
 	}
@@ -191,18 +197,8 @@ public class Projeto {
 	@Override
 	public String toString() {
 		return "Projeto [id=" + id + ", nomeProjeto=" + nomeProjeto + ", dt_inicio=" + dt_inicio + ", dt_fim=" + dt_fim
-				+ ", cep=" + cep + ", rua=" + rua + ", cidade=" + cidade + ", baiiro=" + baiiro + ", numeroCasa="
+				+ ", cep=" + cep + ", rua=" + rua + ", cidade=" + cidade + ", bairro=" + bairro + ", numeroCasa="
 				+ numeroCasa + ", descricao=" + descricao + ", img=" + img + ", fornecedores=" + fornecedores
 				+ ", cliente=" + cliente + "]";
 	}
-
-
-	
-
-
-	
-	
-	
-	
-
 }

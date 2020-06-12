@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Cliente {
@@ -48,19 +47,12 @@ public class Cliente {
 			   CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	private Set<Projeto> projetos;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="projeto_id")
-	private Projeto projeto;
-	
-	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(
 		name="cliente_fornecedor",
 		joinColumns = @JoinColumn(name="cliente_id"),
 		inverseJoinColumns = @JoinColumn(name="fornecedor_id"))
 	private Set<Fornecedor> fornecedores;
-	
-	
 	
 	// método para relacionamento bi-direcional
 	@SuppressWarnings("unchecked")
@@ -71,7 +63,6 @@ public class Cliente {
 		projetos.add(tempProjeto);
 		tempProjeto.setCliente(this);
 	}
-	
 
 	public Cliente() {
 	}
@@ -91,9 +82,6 @@ public class Cliente {
 		this.img = img;
 		this.projetos = projetos;
 	}
-
-
-
 
 
 	public Long getId() {

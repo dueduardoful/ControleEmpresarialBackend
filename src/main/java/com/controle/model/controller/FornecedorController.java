@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,11 +24,12 @@ public class FornecedorController {
 	private FornecedorService fornecedorService;
 	
 	@PostMapping("")
-	public Fornecedor save(Fornecedor fornecedor) {
+	public Fornecedor save(@RequestBody Fornecedor fornecedor) {
+		System.out.println(fornecedor);
 		return this.fornecedorService.save(fornecedor);
 	}
 	@PutMapping("")
-	public Fornecedor update(Fornecedor fornecedor)  throws Exception {
+	public Fornecedor update(@RequestBody Fornecedor fornecedor)  throws Exception {
 		return this.fornecedorService.update(fornecedor);
 	}
 

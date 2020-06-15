@@ -14,6 +14,12 @@ public class FornecedorService {
 	@Autowired
 	private FornecedorRepository fornecedorRepository;
 	
+	List<Fornecedor> fornecedores;
+	
+	public void test() {
+		this.fornecedores.forEach(list -> this.fornecedorRepository.save(list));
+	}
+	
 	public Fornecedor save(Fornecedor fornecedor) {
 		return this.fornecedorRepository.save(fornecedor);
 	}

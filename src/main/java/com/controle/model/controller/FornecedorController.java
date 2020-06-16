@@ -42,8 +42,9 @@ public class FornecedorController {
 	public Fornecedor findById(@PathVariable("id")Long id) {
 		return this.fornecedorService.findById(id);
 	}
+	
 	@DeleteMapping("/{id}")
 	public void deleteById (@PathVariable("id")Long id) {
-		this.fornecedorService.findById(id);
+		this.fornecedorService.deleteById(id);
 	}
 }

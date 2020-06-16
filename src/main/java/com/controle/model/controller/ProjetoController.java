@@ -44,8 +44,9 @@ public class ProjetoController {
 		return this.projetoService.update(projeto);
 	}
 	
-	@DeleteMapping("{id}")
+	@DeleteMapping("/{id}")
 	public void deleteById(@PathVariable("id") long id) {
+		System.out.println(id);
 		this.projetoService.deleteById(id);
 	}
 	

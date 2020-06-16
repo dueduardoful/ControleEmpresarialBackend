@@ -43,6 +43,8 @@ public class Fornecedor {
 	
 	private String numeroCasa;
 	
+	private String complemento;
+	
 	private String obs;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -82,6 +84,14 @@ public class Fornecedor {
 		this.projetos = projetos;
 	}
 	
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
 	public String getCep() {
 		return cep;
 	}

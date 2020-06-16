@@ -23,6 +23,8 @@ public class Fornecedor {
 	
 	private String cel;
 	
+	private String cep;
+	
 	private String tel;
 	
 	private String email;
@@ -78,6 +80,14 @@ public class Fornecedor {
 		this.bairro = bairro;
 		this.numeroCasa = numeroCasa;
 		this.projetos = projetos;
+	}
+	
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	public String getEstado() {

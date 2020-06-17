@@ -8,11 +8,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -52,22 +50,16 @@ public class Cliente {
 	
 	private String img;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
 	private List<Projeto> projetos;
-	
-	@ManyToMany
-	@JoinTable(
-		name="cliente_fornecedor",
-		joinColumns = @JoinColumn(name="cliente_id"),
-		inverseJoinColumns = @JoinColumn(name="fornecedor_id"))
-	private List<Fornecedor> fornecedores;
 
 	public Cliente() {
 	}
 	
 	public Cliente(Long id, String nome, String cpf, int cep, String rua, String estado, String cidade, String bairro,
 			String numeroCasa, String complemento, LocalDate dt_nasc, String email, String celular, String telefoneFixo,
-			String img, List<Projeto> projetos, List<Fornecedor> fornecedores) {
+			String img, List<Projeto> projetos) {
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
@@ -84,7 +76,6 @@ public class Cliente {
 		this.telefoneFixo = telefoneFixo;
 		this.img = img;
 		this.projetos = projetos;
-		this.fornecedores = fornecedores;
 	}
 
 	public Cliente(Long id, String nome, String cpf, int cep, String rua, String cidade, String bairro,
@@ -232,20 +223,12 @@ public class Cliente {
 		this.projetos = projetos;
 	}
 
-	public List<Fornecedor> getFornecedores() {
-		return fornecedores;
-	}
-
-	public void setFornecedores(List<Fornecedor> fornecedores) {
-		this.fornecedores = fornecedores;
-	}
-
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", cep=" + cep + ", rua=" + rua + ", estado="
 				+ estado + ", cidade=" + cidade + ", bairro=" + bairro + ", numeroCasa=" + numeroCasa + ", complemento="
 				+ complemento + ", dt_nasc=" + dt_nasc + ", email=" + email + ", celular=" + celular + ", telefoneFixo="
-				+ telefoneFixo + ", img=" + img + ", projetos=" + projetos + ", fornecedores=" + fornecedores + "]";
+				+ telefoneFixo + ", img=" + img + ", projetos=" + projetos + "]";
 	}
 
 	

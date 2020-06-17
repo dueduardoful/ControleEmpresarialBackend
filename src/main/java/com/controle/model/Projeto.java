@@ -1,8 +1,9 @@
 package com.controle.model;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,8 +15,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 @Entity
 public class Projeto {
@@ -26,10 +29,12 @@ public class Projeto {
 	
 	private String nomeProjeto;
 	
-	@CreationTimestamp
+	@JsonSerialize(using = LocalDateSerializer.class)
+	@JsonDeserialize(using = LocalDateDeserializer.class)
 	private LocalDate dt_inicio;
 	
-	@UpdateTimestamp
+	@JsonSerialize(using = LocalDateSerializer.class)
+	@JsonDeserialize(using = LocalDateDeserializer.class)
 	private LocalDate dt_fim;
 	
 	private int cep;
@@ -47,14 +52,13 @@ public class Projeto {
 		name="projeto_fornecedor",
 		joinColumns = @JoinColumn(name="projeto_id"),
 		inverseJoinColumns = @JoinColumn(name="fornecedor_id"))
-	private Set<Fornecedor> fornecedores;
+	private List<Fornecedor> fornecedores;
 	
-	@ManyToOne
-	@JoinColumn(name="cliente_id")
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Cliente cliente;
 
 	public Projeto(Long id, String nomeProjeto, LocalDate dt_inicio, LocalDate dt_fim, int cep, String rua, String cidade,
-			String bairro, String numeroCasa, String descricao, String img, Set<Fornecedor> fornecedores,
+			String bairro, String numeroCasa, String descricao, String img, List<Fornecedor> fornecedores,
 			Cliente cliente) {
 		this.id = id;
 		this.nomeProjeto = nomeProjeto;
@@ -66,11 +70,13 @@ public class Projeto {
 		this.bairro = bairro;
 		this.numeroCasa = numeroCasa;
 		this.descricao = descricao;
-		this.img = img;
+		this.img = 	img;
 		this.fornecedores = fornecedores;
 		this.cliente = cliente;
 	}
 
+	
+	
 	public String getComplemento() {
 		return complemento;
 	}
@@ -186,11 +192,11 @@ public class Projeto {
 		this.id = id;
 	}
 
-	public Set<Fornecedor> getFornecedores() {
+	public List<Fornecedor> getFornecedores() {
 		return fornecedores;
 	}
 
-	public void setFornecedores(Set<Fornecedor> fornecedores) {
+	public void setFornecedores(List<Fornecedor> fornecedores) {
 		this.fornecedores = fornecedores;
 	}
 

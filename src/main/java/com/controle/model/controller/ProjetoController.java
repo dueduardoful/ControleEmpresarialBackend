@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.controle.model.Cliente;
 import com.controle.model.Projeto;
+import com.controle.model.service.ClienteService;
 import com.controle.model.service.ProjetoService;
 
 @RestController
@@ -24,9 +26,18 @@ public class ProjetoController {
 	@Autowired
 	private ProjetoService projetoService;
 	
+	@Autowired
+	private ClienteService clienteService;
+	
 	@GetMapping("")
 	public List<Projeto> findAll(){
 		return this.projetoService.findAll();
+	}
+	
+	@GetMapping("/cliente/{id}")
+	public List<Projeto> findByCliente(@PathVariable("id") long id){
+		Cliente cliente = this.clienteService.findById(id);
+		return this.projetoService.findByCliente(cliente);
 	}
 	
 	@GetMapping("/{id}")

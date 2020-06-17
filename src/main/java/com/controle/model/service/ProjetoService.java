@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.controle.model.Cliente;
 import com.controle.model.Projeto;
 import com.controle.repository.ProjetoRepository;
 
@@ -16,6 +17,10 @@ public class ProjetoService {
 	
 	public Projeto save(Projeto projeto) {
 		return this.projetoRepository.save(projeto);
+	}
+	
+	public List<Projeto> findByCliente(Cliente cliente){
+		return this.projetoRepository.findByCliente(cliente);
 	}
 	
 	public Projeto update(Projeto projeto) {

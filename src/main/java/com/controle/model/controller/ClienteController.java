@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.controle.model.Cliente;
+import com.controle.model.Projeto;
 import com.controle.model.service.ClienteService;
+import com.controle.model.service.ProjetoService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -23,6 +25,9 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private ProjetoService projetoService;
 	
 	@PostMapping("")
 	public Cliente save(@RequestBody Cliente cliente) {
@@ -47,6 +52,14 @@ public class ClienteController {
 	
 	@DeleteMapping("/{id}")
 	public void deleteById(@PathVariable("id") long id) {
+		Cliente cliente = this.clienteService.findById(id);
+		List<Projeto> projetos = this.projetoService.findByCliente(cliente);
+		
+		projetos.forEach( projeto -> {
+			projeto.setCliente(null);
+			this.projetoService.update(projeto);
+		});
+		
 		this.clienteService.deleteById(id);
 	}
 	

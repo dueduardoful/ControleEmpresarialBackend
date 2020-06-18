@@ -1,10 +1,12 @@
 package com.controle.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -45,7 +47,10 @@ public class Projeto {
 	private String complemento;
 	private double valorTotal;
 	private String descricao;
-	private String img;
+	
+	@ElementCollection
+	@Column(columnDefinition = "TEXT")
+	private List<String> img = new ArrayList<>();
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
@@ -58,7 +63,7 @@ public class Projeto {
 	private Cliente cliente;
 
 	public Projeto(Long id, String nomeProjeto, LocalDate dt_inicio, LocalDate dt_fim, int cep, String rua, String cidade,
-			String bairro, String numeroCasa, String descricao, String img, List<Fornecedor> fornecedores,
+			String bairro, String numeroCasa, String descricao, List<String> img, List<Fornecedor> fornecedores,
 			Cliente cliente) {
 		this.id = id;
 		this.nomeProjeto = nomeProjeto;
@@ -168,11 +173,11 @@ public class Projeto {
 		this.descricao = descricao;
 	}
 
-	public String getImg() {
+	public List<String> getImg() {
 		return img;
 	}
 
-	public void setImg(String img) {
+	public void setImg(List<String>  img) {
 		this.img = img;
 	}
 

@@ -10,6 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
+
 @Entity
 public class Fornecedor {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,6 +51,7 @@ public class Fornecedor {
 	
 	private String obs;
 	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			name="projeto_fornecedor",
